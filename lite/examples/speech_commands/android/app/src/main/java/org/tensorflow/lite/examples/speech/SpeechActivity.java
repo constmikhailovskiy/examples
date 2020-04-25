@@ -85,8 +85,8 @@ public class SpeechActivity extends Activity
   private static final int SUPPRESSION_MS = 1500;
   private static final int MINIMUM_COUNT = 3;
   private static final long MINIMUM_TIME_BETWEEN_SAMPLES_MS = 30;
-  private static final String LABEL_FILENAME = "file:///android_asset/conv_actions_labels.txt";
-  private static final String MODEL_FILENAME = "file:///android_asset/conv_actions_frozen.tflite";
+  private static final String LABEL_FILENAME = "file:///android_asset/detect_labels.txt";
+  private static final String MODEL_FILENAME = "file:///android_asset/converted_model.tflite";
 
   // UI elements.
   private static final int REQUEST_RECORD_AUDIO = 13;
@@ -111,16 +111,7 @@ public class SpeechActivity extends Activity
   private Interpreter tfLite;
   private ImageView bottomSheetArrowImageView;
 
-  private TextView yesTextView,
-      noTextView,
-      upTextView,
-      downTextView,
-      leftTextView,
-      rightTextView,
-      onTextView,
-      offTextView,
-      stopTextView,
-      goTextView;
+  private TextView onereachTextView;
   private TextView sampleRateTextView, inferenceTimeTextView;
   private ImageView plusImageView, minusImageView;
   private SwitchCompat apiSwitchCompat;
@@ -204,16 +195,7 @@ public class SpeechActivity extends Activity
     minusImageView = findViewById(R.id.minus);
     apiSwitchCompat = findViewById(R.id.api_info_switch);
 
-    yesTextView = findViewById(R.id.yes);
-    noTextView = findViewById(R.id.no);
-    upTextView = findViewById(R.id.up);
-    downTextView = findViewById(R.id.down);
-    leftTextView = findViewById(R.id.left);
-    rightTextView = findViewById(R.id.right);
-    onTextView = findViewById(R.id.on);
-    offTextView = findViewById(R.id.off);
-    stopTextView = findViewById(R.id.stop);
-    goTextView = findViewById(R.id.go);
+    onereachTextView = findViewById(R.id.onereach);
 
     apiSwitchCompat.setOnCheckedChangeListener(this);
 
@@ -444,37 +426,8 @@ public class SpeechActivity extends Activity
                   }
                 }
 
-                switch (labelIndex - 2) {
-                  case 0:
-                    selectedTextView = yesTextView;
-                    break;
-                  case 1:
-                    selectedTextView = noTextView;
-                    break;
-                  case 2:
-                    selectedTextView = upTextView;
-                    break;
-                  case 3:
-                    selectedTextView = downTextView;
-                    break;
-                  case 4:
-                    selectedTextView = leftTextView;
-                    break;
-                  case 5:
-                    selectedTextView = rightTextView;
-                    break;
-                  case 6:
-                    selectedTextView = onTextView;
-                    break;
-                  case 7:
-                    selectedTextView = offTextView;
-                    break;
-                  case 8:
-                    selectedTextView = stopTextView;
-                    break;
-                  case 9:
-                    selectedTextView = goTextView;
-                    break;
+                if (labelIndex - 2 == 0) {
+                  selectedTextView = onereachTextView;
                 }
 
                 if (selectedTextView != null) {
