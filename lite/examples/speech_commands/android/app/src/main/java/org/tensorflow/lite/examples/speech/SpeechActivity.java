@@ -86,7 +86,7 @@ public class SpeechActivity extends Activity
   private static final int MINIMUM_COUNT = 3;
   private static final long MINIMUM_TIME_BETWEEN_SAMPLES_MS = 30;
   private static final String LABEL_FILENAME = "file:///android_asset/detect_labels.txt";
-  private static final String MODEL_FILENAME = "file:///android_asset/converted_model.tflite";
+  private static final String MODEL_FILENAME = "file:///android_asset/model.tflite";
 
   // UI elements.
   private static final int REQUEST_RECORD_AUDIO = 13;
